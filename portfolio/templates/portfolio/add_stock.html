@@ -1,0 +1,155 @@
+<!-- portfolio/templates/portfolio/add_stock.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Stock</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f5f8;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            border-radius: 10px;
+            padding: 40px 50px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 450px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 14px;
+            color: #ffffff;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input:focus, select:focus {
+            border-color: #8e44ad;
+            outline: none;
+        }
+
+        .form-btn {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #8e44ad;
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #9b59b6;
+        }
+
+        .back-btn a {
+            display: block;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn a:hover {
+            color: #3498db;
+        }
+
+        .form-container .form-group input,
+        .form-container .form-group select {
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 30px;
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Add a New Stock</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_symbol">Stock Symbol</label>
+                    {{ form.symbol }}
+                </div>
+                <div class="form-group">
+                    <label for="id_name">Stock Name</label>
+                    {{ form.name }}
+                </div>
+                <div class="form-group">
+                    <label for="id_quantity">Quantity</label>
+                    {{ form.quantity }}
+                </div>
+                <div class="form-group">
+                    <label for="id_purchase_price">Purchase Price</label>
+                    {{ form.purchase_price }}
+                </div>
+                <div class="form-btn">
+                    <button type="submit">Add Stock</button>
+                </div>
+            </form>
+            <div class="back-btn">
+                <a href="{% url 'portfolio:portfolio_view' %}">Back to Portfolio</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
